@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AIF_Supplement_NewConcepts.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="-aif--bổ-sung-các-khái-niệm-chưa-xuất-hiện">📌 AIF – Bổ Sung: Các Khái Niệm Chưa Xuất Hiện</h1>
+<hr>
+<h2 id="1-các-kiến-trúc-neural-network--bổ-sung">1. Các Kiến Trúc Neural Network – Bổ Sung</h2>
+<blockquote>
+<p>(Domain 1 đã có RNN, GAN, ResNet – file này bổ sung phần còn thiếu)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Kiến trúc</th>
+<th>Chuyên dùng cho</th>
+<th>Ghi nhớ nhanh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WaveNet</strong></td>
+<td>Tổng hợp âm thanh &amp; giọng nói thô (Raw audio)</td>
+<td><em>&quot;Wave = Sóng âm&quot;</em></td>
+</tr>
+<tr>
+<td><strong>BERT</strong></td>
+<td>Hiểu ngôn ngữ, phân loại văn bản, QA</td>
+<td>Encoder-only · Đọc cả 2 chiều</td>
+</tr>
+<tr>
+<td><strong>GPT</strong></td>
+<td>Sinh văn bản</td>
+<td>Decoder-only · Đọc 1 chiều</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-self-supervised-learning--phương-pháp-học-thứ-5">2. Self-Supervised Learning – Phương Pháp Học Thứ 5</h2>
+<blockquote>
+<p>Chưa xuất hiện trong bất kỳ domain nào trước đó.</p>
+</blockquote>
+<p><strong>Định nghĩa:</strong> Mô hình <strong>tự tạo nhãn cho chính nó</strong> từ dữ liệu thô – <strong>không cần con người gán nhãn</strong>.</p>
+<pre class="hljs"><code><div>Dữ liệu thô ──► Mô hình tự che/ẩn một phần ──► Học cách dự đoán phần bị ẩn
+                (ví dụ: che từ trong câu)         → Tự tạo nhãn
+</div></code></pre>
+<blockquote>
+<p>💡 <strong>Đây là nền tảng của GPT, BERT</strong> – lý do tại sao các LLM có thể học từ lượng dữ liệu khổng lồ mà không cần gán nhãn thủ công.</p>
+</blockquote>
+<p><strong>So sánh 5 phương pháp học:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Phương pháp</th>
+<th>Nhãn</th>
+<th>Ví dụ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supervised</td>
+<td>✅ Con người gán</td>
+<td>Email spam/không spam</td>
+</tr>
+<tr>
+<td>Unsupervised</td>
+<td>❌ Không nhãn</td>
+<td>Phân cụm khách hàng</td>
+</tr>
+<tr>
+<td>Semi-supervised</td>
+<td>⚡ Ít nhãn + nhiều không nhãn</td>
+<td>Pseudo-labeling</td>
+</tr>
+<tr>
+<td>Reinforcement</td>
+<td>🎮 Reward từ environment</td>
+<td>AlphaGo</td>
+</tr>
+<tr>
+<td><strong>Self-Supervised</strong></td>
+<td>🤖 <strong>Tự tạo nhãn từ dữ liệu</strong></td>
+<td>GPT, BERT</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-edge-ai-vs-cloud-ai">3. Edge AI vs Cloud AI</h2>
+<blockquote>
+<p>Chưa được đề cập trong các domain trước.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Edge AI</strong></th>
+<th><strong>Cloud AI</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vị trí xử lý</strong></td>
+<td>Thiết bị đầu cuối (camera, sensor, điện thoại)</td>
+<td>Máy chủ AWS</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>Cực thấp (không cần internet)</td>
+<td>Cao hơn (phụ thuộc mạng)</td>
+</tr>
+<tr>
+<td><strong>Model size</strong></td>
+<td>Chỉ chạy được <strong>SLM (Small Language Models)</strong></td>
+<td>Chạy được mô hình lớn tùy ý</td>
+</tr>
+<tr>
+<td><strong>Kết nối</strong></td>
+<td>Không cần internet</td>
+<td>Cần internet</td>
+</tr>
+<tr>
+<td><strong>Use case</strong></td>
+<td>Camera an ninh · Xe tự lái · IoT sensor</td>
+<td>Chatbot · Phân tích dữ liệu lớn</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-regularization--giải-pháp-overfitting-bổ-sung">4. Regularization – Giải Pháp Overfitting (Bổ Sung)</h2>
+<blockquote>
+<p>Domain 1 đã đề cập early stopping &amp; feature selection – đây là kỹ thuật bổ sung còn thiếu.</p>
+</blockquote>
+<p><strong>Regularization:</strong> Kỹ thuật &quot;phạt&quot; mô hình khi trọng số quá lớn, tránh học vẹt.</p>
+<table>
+<thead>
+<tr>
+<th>Giải pháp Overfitting</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thêm dữ liệu huấn luyện</td>
+<td>Cách tốt nhất</td>
+</tr>
+<tr>
+<td>Early Stopping</td>
+<td>Dừng trước khi overfit</td>
+</tr>
+<tr>
+<td><strong>Regularization (L1/L2)</strong></td>
+<td>Phạt trọng số quá lớn ← <strong>Mới</strong></td>
+</tr>
+<tr>
+<td>Feature selection</td>
+<td>Giảm bớt đặc trưng</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-mlops--khái-niệm-bổ-sung">5. MLOps – Khái Niệm Bổ Sung</h2>
+<blockquote>
+<p>Domain 3 có SageMaker Pipelines, Domain 5 có Governance – đây là định nghĩa tổng thể còn thiếu.</p>
+</blockquote>
+<p><strong>MLOps = DevOps áp dụng cho AI</strong>, nhưng bổ sung thêm:</p>
+<pre class="hljs"><code><div>DevOps truyền thống:   Code Version Control + CI/CD
+                              +
+MLOps bổ sung thêm:    Data Version Control + Model Version Control
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th>Thành phần MLOps</th>
+<th>Công cụ AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code CI/CD</td>
+<td>SageMaker Pipelines</td>
+</tr>
+<tr>
+<td>Model versioning &amp; approval</td>
+<td>SageMaker Model Registry</td>
+</tr>
+<tr>
+<td>Data tracking</td>
+<td>SageMaker Data Lineage</td>
+</tr>
+<tr>
+<td>Production monitoring</td>
+<td>SageMaker Model Monitor</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="6-vpc-endpoints--phân-biệt-2-loại">6. VPC Endpoints – Phân Biệt 2 Loại</h2>
+<blockquote>
+<p>Domain 5 đề cập PrivateLink tổng quát – đây là chi tiết phân biệt 2 loại <strong>bắt buộc nhớ</strong>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Gateway Endpoint</strong></th>
+<th><strong>Interface Endpoint (PrivateLink)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chi phí</strong></td>
+<td>✅ <strong>MIỄN PHÍ</strong></td>
+<td>❌ <strong>Có phí</strong></td>
+</tr>
+<tr>
+<td><strong>Dùng cho</strong></td>
+<td><strong>S3</strong> và <strong>DynamoDB</strong></td>
+<td>Tất cả dịch vụ AI: <strong>Bedrock, SageMaker</strong>, v.v.</td>
+</tr>
+<tr>
+<td><strong>Cơ chế</strong></td>
+<td>Route table</td>
+<td>Network Interface (ENI) trong VPC</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🎯 <strong>Từ khóa thi:</strong> <em>&quot;Kết nối riêng tư với Bedrock/SageMaker&quot;</em> → <strong>Interface Endpoint (có phí)</strong>
+<em>&quot;Kết nối riêng tư với S3&quot;</em> → <strong>Gateway Endpoint (miễn phí)</strong></p>
+</blockquote>
+<hr>
+<h2 id="7-bộ-công-cụ-bảo-mật-aws--phân-biệt-rõ">7. Bộ Công Cụ Bảo Mật AWS – Phân Biệt Rõ</h2>
+<blockquote>
+<p>Domain 5 đã có CloudTrail, Macie, Artifact, Audit Manager – bổ sung 2 dịch vụ còn thiếu.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Chức năng</th>
+<th>Từ khóa thi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CloudTrail</strong></td>
+<td>Ghi lại <strong>API calls</strong> – ai làm gì, lúc nào</td>
+<td><em>&quot;Ai đã xóa / sửa resource?&quot;</em></td>
+</tr>
+<tr>
+<td><strong>AWS Config</strong></td>
+<td>Theo dõi <strong>thay đổi cấu hình</strong> tài nguyên theo thời gian</td>
+<td><em>&quot;Cấu hình bị thay đổi lúc nào?&quot;</em> ← <strong>Mới</strong></td>
+</tr>
+<tr>
+<td><strong>Amazon Macie</strong></td>
+<td>Quét tìm <strong>PII</strong> trong S3</td>
+<td><em>&quot;Dữ liệu nhạy cảm trong S3&quot;</em></td>
+</tr>
+<tr>
+<td><strong>Amazon Inspector</strong></td>
+<td>Quét <strong>lỗ hổng phần mềm</strong> (vulnerabilities) trong EC2, container</td>
+<td><em>&quot;Vulnerability scan&quot;</em> ← <strong>Mới</strong></td>
+</tr>
+<tr>
+<td><strong>AWS Artifact</strong></td>
+<td>Tải báo cáo chứng nhận (ISO, SOC, PCI) + ký thỏa thuận (BAA, HIPAA)</td>
+<td><em>&quot;Compliance report download&quot;</em></td>
+</tr>
+<tr>
+<td><strong>AWS Audit Manager</strong></td>
+<td>Tự động thu thập bằng chứng kiểm toán liên tục</td>
+<td><em>&quot;Continuous audit evidence&quot;</em></td>
+</tr>
+<tr>
+<td><strong>AWS Trusted Advisor</strong></td>
+<td>Lời khuyên tối ưu chi phí, bảo mật cho tài khoản AWS</td>
+<td><em>&quot;Account assessment, best practices&quot;</em> ← <strong>Mới</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="8-iam--phân-biệt-4-thành-phần">8. IAM – Phân Biệt 4 Thành Phần</h2>
+<blockquote>
+<p>Chưa được giải thích chi tiết trong các domain trước.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Là gì</th>
+<th>Ghi nhớ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Users</strong></td>
+<td>Người dùng thật (cá nhân)</td>
+<td>1 người = 1 user</td>
+</tr>
+<tr>
+<td><strong>Groups</strong></td>
+<td>Nhóm chứa Users</td>
+<td>Gán policy 1 lần cho cả nhóm</td>
+</tr>
+<tr>
+<td><strong>Policies</strong></td>
+<td>Văn bản <strong>JSON</strong> định nghĩa quyền Allow/Deny</td>
+<td>Gắn vào User, Group hoặc Role</td>
+</tr>
+<tr>
+<td><strong>Roles</strong></td>
+<td>Quyền <strong>tạm thời</strong> gán cho <strong>AWS Services</strong></td>
+<td>EC2 gọi S3, Lambda gọi Bedrock...</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🔑 <strong>Nguyên tắc vàng:</strong> <strong>Least Privilege</strong> – chỉ cấp đúng quyền tối thiểu cần thiết</p>
+</blockquote>
+<p><strong>Phân biệt quan trọng:</strong></p>
+<ul>
+<li><strong>Users/Groups</strong> → dành cho <strong>con người</strong></li>
+<li><strong>Roles</strong> → dành cho <strong>AWS Services</strong> (Lambda, EC2, SageMaker gọi Bedrock)</li>
+</ul>
+<hr>
+<h2 id="9-bảng-tra-cứu-nhanh--toàn-bộ-bổ-sung">9. Bảng Tra Cứu Nhanh – Toàn Bộ Bổ Sung</h2>
+<table>
+<thead>
+<tr>
+<th>Từ khóa trong đề</th>
+<th>Đáp án</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mô hình tự tạo nhãn, không cần con người</td>
+<td><strong>Self-Supervised Learning</strong></td>
+</tr>
+<tr>
+<td>Tổng hợp giọng nói thô (raw audio)</td>
+<td><strong>WaveNet</strong></td>
+</tr>
+<tr>
+<td>Thiết bị đầu cuối, không internet, latency thấp</td>
+<td><strong>Edge AI + SLM</strong></td>
+</tr>
+<tr>
+<td>Tránh overfitting bằng &quot;phạt&quot; trọng số</td>
+<td><strong>Regularization (L1/L2)</strong></td>
+</tr>
+<tr>
+<td>Kết nối riêng tư với S3 (miễn phí)</td>
+<td><strong>Gateway Endpoint</strong></td>
+</tr>
+<tr>
+<td>Kết nối riêng tư với Bedrock/SageMaker</td>
+<td><strong>Interface Endpoint (PrivateLink)</strong></td>
+</tr>
+<tr>
+<td>Ai đã xóa / sửa resource AWS?</td>
+<td><strong>CloudTrail</strong></td>
+</tr>
+<tr>
+<td>Cấu hình resource thay đổi lúc nào?</td>
+<td><strong>AWS Config</strong></td>
+</tr>
+<tr>
+<td>Quét lỗ hổng bảo mật phần mềm</td>
+<td><strong>Amazon Inspector</strong></td>
+</tr>
+<tr>
+<td>Lời khuyên tối ưu tài khoản AWS</td>
+<td><strong>AWS Trusted Advisor</strong></td>
+</tr>
+<tr>
+<td>Quyền tạm thời cho AWS Service</td>
+<td><strong>IAM Role</strong></td>
+</tr>
+<tr>
+<td>DevOps + Data &amp; Model version control</td>
+<td><strong>MLOps</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>📝 Tài liệu bổ sung AIF – Các khái niệm chưa xuất hiện trong Domain 1–5 &amp; Bonus</em></p>
+
+</body>
+</html>
